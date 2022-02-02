@@ -1,0 +1,695 @@
+:root {
+  --main-uiwhite: #fbfaff;
+  --main-yellow: #f6e71d;
+  --main-black: #020202;
+  --main-grey: #313131;
+  --main-uigreen: #38ECB3;
+  --main-uidarkgreen: #0B2927;
+  --main-uiblack: #151418;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+
+html{
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  /* Set font size for easy rem calculations
+  * default document font size = 16px, 1rem = 16px, 100% = 16px
+  * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+ */
+}
+/* A few media query to set some font sizes at different screen sizes.
+ * This helps automate a bit of responsiveness.
+ * The trick is to use the rem unit for size values, margin and padding.
+ * Because rem is relative to the document font size
+ * when we scale up or down the font size on the document
+ * it will affect all properties using rem units for the values.
+*/
+
+/* I am using the em unit for breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size
+ * As an example: a breakpoint at 980px
+ * 980px / 16px = 61.25em
+*/
+
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+/* Base Styles */
+
+body {
+  font-family: 'poppins', sans-serif;
+  font-size: 1.8rem; /* 18px */
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--main-uigreen);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+h1{
+  font-family: 'Raleway' sans-serif !important;
+  font-weight: 700;
+  text-align: center;
+  color: var(--main-uiwhite);
+  font-size: 6rem;
+}
+
+h2 {
+  font-family: 'Raleway' sans-serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 4.2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-uigreen);
+  transition: color 0.5s ease-out;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* nav */
+
+.mntl {
+  display: inline-block;
+  vertical-align: top;
+  max-width: 4rem;
+  max-height: 4rem;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 2rem;    /* if you want it vertically middle of the navbar. */
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--main-uiblack);
+  z-index: 10;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 0.25rem;
+}
+
+.nav-list {
+  display: flex;
+  margin-right: 0.25rem;
+  
+}
+
+@media (max-width: 28.75em) {
+  .nav {
+    justify-content: center;
+  }
+
+  .nav-list {
+    margin: 0 0 0 1rem;
+  }
+}
+
+.nav-list a {
+  display: block;
+  font-size: 2, 2rem;
+  padding: 2rem;
+  border: 4rem;
+  border-radius: 5rem;
+  transition: all .2s ease-out;
+}
+
+.nav-list a:hover, .nav-list a:active {
+  background: var(--main-uidarkgreen);
+  color: var(--main-uigreen);
+  border-radius: 5rem;
+  outline: 1px solid var(--main-uigreen);
+  box-shadow: 0 0 4px var(--main-uigreen);
+  text-shadow: 0 0 32px var(--main-uigreen);
+}
+
+
+
+/*
+.nav-list i {
+  transform: translate(6px, 1.5px)
+}
+
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--main-black);
+  min-width: 105px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+
+}
+
+.dropdown-content a {
+  color:var(--main-newgreen);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--main-newgreen);
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropbtn:hover {
+  cursor: pointer;
+}
+
+transition: all .2s ease-in-out;
+  transform: scale(1.1); 
+  
+  use that to make grow when you hover */
+  
+
+/* welcome section */
+
+.welcome-section {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color:var(--main-grey);
+  background-image: linear-gradient(180deg, #151418 25%, #0b2927 100%);
+}
+
+@media (max-width: 28.75em) {
+  .welcome-section {
+    padding: 6rem 4rem; /* 
+    
+    -with two values for the padding property we get top and bottom padddings at 6rem and right and left paddings at 1rem
+
+    -with four: top, right, bottom, left
+
+    -with three: top, right and left, bottom
+
+    -with one: all-four-paddings-are-x 
+     */
+  }
+}
+/* .welcome-section h1 {
+  transition: all .3s ease-in-out;
+}
+
+.welcome-section h1:hover {
+  transform: scale(1.5);
+
+}
+*/
+
+/*
+WE DIDNT USE THIS BECAUSE WE DECIDED TO LEAVE IT NATURALLY PULSING WITH YELLOW
+.me-bruh {
+  border-radius: 50%;
+  border: 5px solid var(--main-white);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 21rem;
+  width: 21rem;
+  margin: center;
+}  
+*/
+.me-bruh {
+  border: 5px solid;
+  border-color: 5px solid var(--main-uigreen);
+	border-radius: 50%;
+  display: block;
+	margin: center;
+	height: 21rem;
+	width: 21rem;
+  margin-left: auto;
+  margin-right: auto;
+	box-shadow: 0 0 0 0 var(--main-uiblack);
+	transform: scale(1);
+	animation: pulse 2s infinite;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 var(--main-uigreen);
+	}
+
+	70% {
+		transform: scale(1);
+		box-shadow: 0 0 0 10px #00000000;
+	}
+
+	100% {
+		transform: scale(0.95);
+		box-shadow: 0 0 0 0 #00000000;
+	}
+}
+/*  Up above if you change the transform: scale(0.95) to (1.00) for both itll leave the image of you statically pulsing with yellow  */
+
+
+.welcome-section h1 {
+  transition: all 0.3s ease-out;
+  color: var(--main-uiwhite);
+}
+.welcome-section h1:hover, .welcome-section h1:active {
+  color: var(--main-uigreen);
+  text-shadow: 0 0 16px var(--main-uigreen);
+}
+
+.welcome-section p {
+  font-size: 3rem;
+  font-weight: 200;
+  font-style: italic;
+  color: var(--main-uiwhite); 
+  transition: all 0.3s ease-out; 
+}
+
+.welcome-section p:hover, .welcome-section p:active {
+  color: var(--main-uigreen);
+  text-shadow: 0 0 16px var(--main-uigreen);
+}
+
+/* projects section */
+
+.projects-section {
+  text-align: center;
+  padding: 10rem 2rem; /* top amd bottom paddings are 10rem right and left paddings are 2 rem */
+  background-color: var(--main-uidarkgreen);
+}
+
+.projects-section-header {
+  max-width: 640px;
+  margin: 0 auto 6rem auto;
+  border-bottom: 3px solid var(--main-uiwhite);
+  color: var(--main-uiwhite);
+  transition: all 0.3s ease-out;
+
+
+/* You can set the margin property to auto to horizontally center the element within its container. The element will then take up the specified width, and the remaining space will be split equally between the left and right margins. 
+  
+  
+If the margin property has four values:
+margin: 25px 50px 75px 100px;
+top margin is 25px
+right margin is 50px
+bottom margin is 75px
+left margin is 100px
+
+
+If the margin property has three values:
+margin: 25px 50px 75px;
+top margin is 25px
+right and left margins are 50px
+bottom margin is 75px
+
+
+If the margin property has two values:
+margin: 25px 50px;
+top and bottom margins are 25px
+right and left margins are 50px
+
+
+If the margin property has one value:
+margin: 25px;
+all four margins are 25px */
+
+
+}
+
+.projects-section-header:hover, .projects-section-header:active {
+  color: var(--main-uigreen);
+  text-shadow: 0 0 16px var(--main-uigreen);
+  border-bottom: 3px solid var(--main-uigreen);
+} 
+
+@media(max-width: 28.75em) { /* max-width	The maximum width of the display area, such as a browser window */
+  .projects-section-header {
+    font-size: 4rem;
+  }
+}
+
+/* "Automagic" image grid using no media queries */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 4rem;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-bottom: 6rem; 
+  /* for more info --> https://www.w3schools.com/cssref/pr_class_display.asp 
+  
+  -grid= displays an element as a block-level grid container
+  
+  -The grid-template-columns property specifies the number (and the widths) of columns in a grid layout. 
+  
+  For more info on minmax grid-template-columns--> https://developer.mozilla.org/en-US/docs/Web/CSS/minmax()
+  */
+}
+
+@media (max-width: 28.75em) {
+  .projects-section {
+    padding: 6rem 4rem; /* 
+    
+    -with two values for the padding property we get top and bottom padddings at 6rem and right and left paddings at 1rem
+
+    -with four: top, right, bottom, left
+
+    -with three: top, right and left, bottom
+
+    -with one: all-four-paddings-are-x 
+     */
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+.project-project-tile {
+  background: var(--main-uigreen);
+  color: var(--main-uidarkgreen);
+  border-radius: 5rem;
+  transition: all 0.10s ease-out;
+  overflow: hidden;
+}
+
+/* 
+so the reason we have overflow hidden is because we want the tile and image to have same border static and hover state, but it wont happen without prolly some JS so instead we made the static border state of the image what we would want on a hover/active state BUT to keep it flush we made the images container or the .project-project-tile have an overflow hidden so it hides the borders of the hover state
+
+*/
+
+
+.project-project-tile:hover, .project-project-tile:active {
+  background: var(--main-uidarkgreen);
+  color: var(--main-uigreen);
+  border-radius: 0.5rem;
+  outline: 1px solid var(--main-uigreen);
+  box-shadow: 0 0 8px var(--main-uigreen);
+  text-shadow: 0 0 32px var(--main-uigreen);
+}
+
+
+.project-image {
+  height: calc(100% - 6.8rem);
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  transition: all 0.10s ease-out;
+}
+
+.project-image:hover, .project-image:active {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+
+
+.project-title {
+  padding: 2rem 0.5rem;
+  font-size: 100%;
+  align-items: center;
+}
+
+.project-title > i {
+  font-size: 100%;
+  align-items: center;
+  margin-left: 8px;
+  transition: transform 0.25s ease-in-out;
+  
+}
+
+.project-project-tile:hover i, .project-project-tile:active i, .project-title:hover > i, .project-title:active > i {
+  transform: translateX(5px);
+}
+
+.project-project-tile i {
+  transition: transform 0.25s ease-in-out;
+}
+
+
+.btn {
+  display: inline-block;
+  padding: 1.5rem 3rem;
+
+}
+
+.btn-show-all {
+  font-size: 100%;
+  background: var(--main-uigreen);
+  color: var(--main-uidarkgreen);
+  border-radius: 5rem;
+
+}
+
+.btn-show-all:hover, .btn-show-all:active {
+  background: var(--main-uidarkgreen);
+  color: var(--main-uigreen);
+  outline: 1px solid var(--main-uigreen);
+  box-shadow: 0 0 8px var(--main-uigreen);
+  text-shadow: 0 0 32px var(--main-uigreen);
+}
+
+.btn-show-all:before {
+  content: 'Show All';
+}
+
+.btn-show-all:hover:before {
+  content: "That's It";
+}
+
+
+.btn-show-all > i {
+  margin-left: 5px;
+  transition: transform 0.25s ease-out;
+}
+
+.btn-show-all:hover > i, .btn-show-all:active > i {
+  transform: translateX(5px);
+  /* so the translateX or translateY effects the chevron symbol on the show all button.
+  From personal testing X moves it horizontally and Y moves it vertically */
+}
+
+/*
+.click {
+  opacity: 0.75;
+  display: none;
+  width: 10%;
+  border-radius: 0.5rem;
+  margin-top: 1%;
+    background: var(--main-newgreen);
+  color: var(--main-black);
+  align-items: center;
+  
+}
+*/
+
+
+/* starting contact section or line 260 on codepen */
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  padding: 0 2rem;
+  background-image: linear-gradient(360deg, #151418 25%, #0b2927 100%);
+  /* 
+-  em	Relative to the font-size of the element (2em means 2 times the size of the current font)	
+- ex	Relative to the x-height of the current font (rarely used)	
+- ch	Relative to the width of the "0" (zero)	
+- rem	Relative to font-size of the root element	
+- vw	Relative to 1% of the width of the viewport*	
+- vh	Relative to 1% of the height of the viewport*	
+- vmin	Relative to 1% of viewport's* smaller dimension	
+- vmax	Relative to 1% of viewport's* larger dimension	
+- %	Relative to the parent element */
+}
+
+.contact-section-header > h2 {
+  font-size: 6rem;
+  color: var(--main-uiwhite);
+  transition: all 0.3s ease-out;
+}
+
+@media (max-width: 28.75em) {
+  .contact-section {
+    padding: 6rem 4rem; /* 
+    
+    -with two values for the padding property we get top and bottom paddings at 6rem and right and left paddings at 1rem
+
+    -with four: top, right, bottom, left
+
+    -with three: top, right and left, bottom
+
+    -with one: all-four-paddings-are-x 
+     */
+  }
+}
+
+@media (max-width: 28.75em) {
+  .contact-section-header > h2 {
+    font-size: 4rem;
+  }
+}
+
+.contact-section-header > p {
+  font-size: 3rem;
+  font-style: italic;
+  color: var(--main-uiwhite);
+  transition: all 0.3s ease-out;
+}
+
+.contact-section-header > p:hover, .contact-section-header > p:active, .contact-section-header > h2:hover, .contact-section-header > h2:active {
+  color: var(--main-uigreen);
+  text-shadow: 0 0 16px var(--main-uigreen);
+
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 980px;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 28.75em) {
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+}
+
+.contact-details {
+  font-size: 2.4rem;
+  transition: transform 0.5s ease-out;
+  padding: 1.5rem 3rem;
+  color: var(--main-uigreen);
+  background: transparent;
+}
+
+.contact-details:hover, .contact-details:active {
+  transform: scale(1.2);
+  background: var(--main-uidarkgreen);
+  outline: 1px solid var(--main-uigreen);
+  box-shadow: 0 0 8px var(--main-uigreen);
+  text-shadow: 0 0 32px var(--main-uigreen);
+  border-radius: 5rem;
+
+}
+
+
+/* start footer */
+footer {
+  font-weight: 300;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+  background: var(--main-uiblack);
+  border-top: 3px solid var(--main-uigreen);
+  align-items: center;
+}
+
+footer > p {
+  margin: 3.5rem;
+}
+
+.SVGFOOT {
+  max-width: 15vh;
+  max-height: 15vh;
+  padding: 2rem;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+/* end footer */
+
+/* Start scrollbar */
+
+html::-webkit-scrollbar {
+  width: 1rem;
+  background-color: var(--main-uidarkgreen);
+  /* this part takes care of the scrollbar container itself */
+}
+
+html::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--main-uigreen);
+  /* this part takes care of the background */
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: var(--main-uigreen);
+  /* this part takes care of the thumb part */
+}
+
+/* End Scrollbar */

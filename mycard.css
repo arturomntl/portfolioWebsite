@@ -1,0 +1,453 @@
+:root {
+  --main-white: #f0f0f0;
+  --main-yellow: #f6e71d;
+  --main-black: #020202;
+  --main-grey: #313131;
+  --main-orange: #e35a1b;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+
+
+html{
+  box-sizing: border-box;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  /* Set font size for easy rem calculations
+  * default document font size = 16px, 1rem = 16px, 100% = 16px
+  * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+ */
+}
+/* A few media query to set some font sizes at different screen sizes.
+ * This helps automate a bit of responsiveness.
+ * The trick is to use the rem unit for size values, margin and padding.
+ * Because rem is relative to the document font size
+ * when we scale up or down the font size on the document
+ * it will affect all properties using rem units for the values.
+*/
+
+/* I am using the em unit for breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size
+ * As an example: a breakpoint at 980px
+ * 980px / 16px = 61.25em
+*/
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+/* Base Styles */
+
+body {
+  font-family: 'poppins', sans-serif;
+  font-size: 1.8rem; /* 18px */
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--main-yellow);
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+h1{
+  font-family: 'Raleway' sans-serif !important;
+  font-weight: 700;
+  text-align: center;
+  color: var(--main-white);
+  font-size: 6rem;
+}
+
+h2 {
+  font-family: 'Raleway' sans-serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 4.2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-yellow);
+  transition: color 0.5s ease-out;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+/* nav */
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--main-black);
+
+  z-index: 10;
+}
+
+.nav-list {
+  display: flex;
+  margin-right: 0.25rem;
+}
+
+@media (max-width: 28.75em) {
+  .nav {
+    justify-content: center;
+  }
+
+  .nav-list {
+    margin: 0 1rem;
+  }
+}
+
+.nav-list a {
+  display: block;
+  font-size: 2, 2rem;
+  padding: 2rem;
+  border: 4rem;
+  border-radius: 0.5rem;
+}
+
+.nav-list a:hover {
+  background: var(--main-yellow);
+  color: var(--main-black);
+  border-radius: 0.5rem;
+}
+
+.nav-list p:hover {
+  background: var(--main-yellow);
+  color: var(--main-black);
+  transition: all .2s ease-out;
+  transform: scale(1.2);
+}
+
+.nav-list i {
+  transform: translate(6px, 1.5px)
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: var(--main-black);
+  min-width: 105px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color:var(--main-yellow);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--main-yellow);
+}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropbtn:hover {
+  cursor: pointer;
+}
+
+/* transition: all .2s ease-in-out;
+  transform: scale(1.1); 
+  
+  use that to make grow when you hover */
+  
+
+/* welcome section */
+
+.card {
+  border-radius: 6.25rem;
+  background: var(--main-grey);
+  box-shadow:  -20px 20px 60px #141414,
+  20px -20px 60px #4e4e4e;
+  max-width: 42rem;
+  height: auto;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.container {
+  align-items: center;
+  justify-content: center;
+  margin: 5rem auto;
+  width: 80%;
+}
+
+.center-txt {
+  text-align: center;
+  font-weight: 100;
+  line-height: 3.75rem;
+  color: var(--main-white) !important;
+  font-size: 2rem !important;
+  font-style: normal !important;
+}
+
+.card .image-container {
+  text-align: center;
+  vertical-align: middle;
+  display: center;
+  /* Since the card-container has an id and a class you could actually do: .card .image-container or #card-container .image-container and it would still have the image centered */
+}
+
+
+
+.profile-image {
+  height: 14rem;
+  width: 14rem;
+  border-radius: 50%;
+  margin: auto;
+  margin-bottom: 2.25rem;
+}
+
+.bottomline {
+  margin: 10 auto 0 auto;
+  border-bottom: 3px solid var(--main-white);
+  padding-bottom: 1rem;
+}
+
+.bodywords {
+  text-align: center;
+  font-style: normal !important;
+  font-family: 'Poppins';
+  font-weight: 100 !important;
+  line-height: 4rem !important;
+  border-bottom: 3px solid var(--main-white);
+  padding-bottom: 1rem !important;
+  padding-top: 1rem;
+}
+
+
+.contact-links-card {
+  display: flex;
+  font-size: rem;
+  width: 100%;
+  max-width: 980px;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.get-me {
+  font-size: 2rem;
+  transition: transform 0.5s ease-out;
+  padding: 0.1rem;
+  color: var(--main-white);
+  background: transparent;
+  height: 1rem;
+  width: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+.get-me:hover {
+  color: var(--main-yellow);
+  filter: drop-shadow(0.875rem 0.875rem 1rem rgba(0, 0, 0, 0.5));
+}
+
+.welcome-section {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color:var(--main-grey);
+}
+
+/* .welcome-section h1 {
+  transition: all .3s ease-in-out;
+}
+
+.welcome-section h1:hover {
+  transform: scale(1.5);
+
+}
+*/
+
+/*
+WE DIDNT USE THIS BECAUSE WE DECIDED TO LEAVE IT NATURALLY PULSING WITH YELLOW
+.me-bruh {
+  border-radius: 50%;
+  border: 5px solid var(--main-white);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 21rem;
+  width: 21rem;
+  margin: center;
+}  
+*/
+
+
+.welcome-section h1:hover {
+  color: var(--main-yellow);
+  transition: color 0.3s ease-out;
+}
+
+.welcome-section p {
+  font-size: 3rem;
+  font-weight: 200;
+  font-style: italic;
+  color: var(--main-yellow);  
+}
+
+
+
+
+
+/* starting contact section or line 260 on codepen */
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  padding: 0 2rem;
+  background-image: linear-gradient(360deg, #020202 25%, #313131 100%);
+  /* 
+-  em	Relative to the font-size of the element (2em means 2 times the size of the current font)	
+- ex	Relative to the x-height of the current font (rarely used)	
+- ch	Relative to the width of the "0" (zero)	
+- rem	Relative to font-size of the root element	
+- vw	Relative to 1% of the width of the viewport*	
+- vh	Relative to 1% of the height of the viewport*	
+- vmin	Relative to 1% of viewport's* smaller dimension	
+- vmax	Relative to 1% of viewport's* larger dimension	
+- %	Relative to the parent element */
+}
+
+.contact-section-header > h2 {
+  font-size: 6rem;
+  color: var(--main-white);
+}
+
+@media (max-width: 28.75em) {
+  .contact-section-header > h2 {
+    font-size: 4rem;
+  }
+}
+
+.contact-section-header > p {
+  font-size: 3rem;
+  font-style: italic;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 980px;
+  margin-top: 4rem;
+  flex-wrap: wrap;
+}
+
+.contact-details {
+  font-size: 2.4rem;
+  transition: transform 0.5s ease-out;
+  padding: 3rem;
+  color: var(--main-yellow);
+  background: transparent;
+}
+
+.contact-details:hover {
+  transform: translateY(8px) scale(1.2);
+}
+
+
+/* start footer */
+footer {
+  font-weight: 300;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+  background: var(--main-black);
+  border-top: 3px solid var(--main-yellow);
+  align-items: center;
+}
+
+footer > p {
+  margin: 3.5rem;
+}
+
+.SVGFOOT {
+  max-width: 15vh;
+  max-height: 15vh;
+  padding: 2rem;
+  margin-right: auto;
+  margin-bottom: 0;
+}
+
+/* end footer */
+
+/* Start scrollbar */
+
+html::-webkit-scrollbar {
+  width: 1rem;
+  background-color: #F5F5F5;
+  /* this part takes care of the scrollbar container itself */
+}
+
+html::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: var(--main-black);
+  /* this part takes care of the background */
+}
+
+html::-webkit-scrollbar-thumb {
+  border-radius: 0.5rem;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+  background-color: var(--main-yellow);
+  /* this part takes care of the thumb part */
+}
+
+/* End Scrollbar */
